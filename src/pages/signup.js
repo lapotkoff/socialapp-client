@@ -75,10 +75,10 @@ class signup extends Component {
         console.log(res.data);
         localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
         this.setState({ loading: false });
-        this.props.histrory.push('/');
+        this.props.history.push('/');
       })
       .catch(err => {
-        // TODO: check what happens if user not found response from API
+        // TODO: we don't handle weak password error on the API side
         this.setState({ errors: err.response.data, loading: false });
       })
       
