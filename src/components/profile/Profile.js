@@ -70,19 +70,23 @@ const styles = {
 };
 
 class Profile extends Component {
+
   handleImageChange = (event) => {
     const image = event.target.files[0];
     const formData = new FormData();
     formData.append('image', image, image.name);
     this.props.uploadImage(formData);
   };
+
   handleEditPicture = () => {
     const fileInput = document.getElementById('imageInput');
     fileInput.click();
   };
+
   handleLogout = () => {
     this.props.logoutUser();
   };
+
   render() {
     const {
       classes,
