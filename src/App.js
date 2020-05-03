@@ -1,74 +1,29 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-
+import './App.css';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+// Redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { SET_AUTHENTICATED } from './redux/types';
-import { logoutUser, getUserData } from './redux/actions/userActions'; 
-
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import './App.css';
-
+import { logoutUser, getUserData } from './redux/actions/userActions';
+// Components
 import Navbar from './components/layout/Navbar';
+import themeObject from './util/theme';
 import AuthRoute from './util/AuthRoute';
-
+// Pages
 import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
+// import user from './pages/user';
 
-// Go to material UI color page to create another theme if needed
-// use theme from util
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#33c9dc',
-      main: '#00bcd4',
-      dark: '#008394',
-      contrastText: '#fff'
-    },
-    secondary: {
-      light: '#ff6333',
-      main: '#ff3d00',
-      dark: '#b22a00',
-      contrastText: '#fff'
-    }
-  },
-  typography: {
-    useNextVariants: true,
-  },
-  form: {
-    textAlign: 'center',
-  },
-  image: {
-    margin: '20px auto 20px auto',
-    width: '150px',
-    height: '150px',
-  },
-  pageTitle: {
-    margin: '10px auto 10px auto',
-  },
-  textField: {
-    margin: '10px auto 10px auto',
-  },
-  button: {
-    marginTop: 20,
-    position: 'relative',
-  },
-  customError: {
-    color: 'red',
-    fontSize: '0.8rem',
-    marginTop: 10,
-  },
-  progress: {
-    position: 'absolute',
-  },
-});
+const theme = createMuiTheme(themeObject);
 
 // axios.defaults.baseURL =
-//   'https://europe-west1-socialape-d081e.cloudfunctions.net/api';
+//   'https://us-central1-socialapp-a41be.cloudfunctions.net/api';
 
 const token = localStorage.FBIdToken;
 if (token) {
@@ -83,23 +38,31 @@ if (token) {
   }
 }
 
-function App() {
-  return (
-    <MuiThemeProvider theme={theme}>
-      <Provider store={store}>
-        <Router>
-          <Navbar />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={home} />
-              <AuthRoute exact path="/login" component={login} />
-              <AuthRoute exact path="/signup" component={signup} />
-            </Switch>
-          </div>
-        </Router>
-      </Provider>
-    </MuiThemeProvider>
-  );
+class App extends Component {
+  render() {
+    return (
+      <MuiThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Router>
+            <Navbar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={home} />
+                <AuthRoute exact path="/login" component={login} />
+                <AuthRoute exact path="/signup" component={signup} />
+                {/* <Route exact path="/users/:handle" component={user} />
+                <Route
+                  exact
+                  path="/users/:handle/scream/:screamId"
+                  component={user}
+                /> */}
+              </Switch>
+            </div>
+          </Router>
+        </Provider>
+      </MuiThemeProvider>
+    );
+  }
 }
 
 export default App;

@@ -15,12 +15,11 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 // Icons
 import EditIcon from '@material-ui/icons/Edit';
 
-const styles = (theme) => ({
-  ...theme,
+const styles = {
   button: {
     float: 'right'
-  }
-});
+  },
+};
 
 class EditDetails extends Component {
   state = {

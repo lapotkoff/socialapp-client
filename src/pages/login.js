@@ -14,7 +14,6 @@ import { loginUser } from '../redux/actions/userActions';
 
 import AppIcon from '../images/icon.png';
 
-//move to a util
 const styles = {
   form: {
     textAlign: 'center',
