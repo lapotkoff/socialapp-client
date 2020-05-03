@@ -24,6 +24,8 @@ import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 const styles = (theme) => ({
   // ...theme
   profile: theme.profile,
+  paper: theme.paper,
+  buttons: theme.buttons,
 });
 
 class Profile extends Component {

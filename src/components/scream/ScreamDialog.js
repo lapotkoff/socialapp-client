@@ -21,7 +21,9 @@ import ChatIcon from '@material-ui/icons/Chat';
 import { connect } from 'react-redux';
 import { getScream, clearErrors } from '../../redux/actions/dataActions';
 
-const styles = {
+const styles = (theme) => ({
+  invisibleSeparator: theme.invisibleSeparator,
+  visibleSeparator: theme.visibleSeparator,
   profileImage: {
     maxWidth: 200,
     height: 200,
@@ -44,7 +46,7 @@ const styles = {
     marginTop: 50,
     marginBottom: 50
   }
-};
+});
 
 class ScreamDialog extends Component {
   state = {

@@ -9,6 +9,12 @@ import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
 import { submitComment } from '../../redux/actions/dataActions';
 
+const styles = (theme) => ({
+  textField: theme.textField,
+  button: theme.button,
+  visibleSeparator: theme.visibleSeparator,
+});
+
 class CommentForm extends Component {
   state = {
     body: '',
@@ -82,4 +88,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   { submitComment }
-)(withStyles()(CommentForm));
+)(withStyles(styles)(CommentForm));
