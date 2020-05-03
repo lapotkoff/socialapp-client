@@ -22,8 +22,8 @@ import user from './pages/user';
 
 const theme = createMuiTheme(themeObject);
 
-// axios.defaults.baseURL =
-//   'https://us-central1-socialapp-a41be.cloudfunctions.net/api';
+axios.defaults.baseURL =
+  'https://us-central1-socialapp-a41be.cloudfunctions.net/api';
 
 const token = localStorage.FBIdToken;
 if (token) {
