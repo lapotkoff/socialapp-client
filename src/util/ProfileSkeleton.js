@@ -11,6 +11,7 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 
 const styles = (theme) => ({
 //   ...theme,
+  profile: theme.profile,
   handle: {
     height: 20,
     backgroundColor: theme.palette.primary.main,
