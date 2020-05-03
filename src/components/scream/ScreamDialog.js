@@ -67,6 +67,7 @@ class ScreamDialog extends Component {
 
     if (oldPath === newPath) oldPath = `/users/${userHandle}`;
 
+    // investigate why this call doesn't trigger page and data refresh
     window.history.pushState(null, null, newPath);
 
     this.setState({ open: true, oldPath, newPath });
@@ -99,7 +100,7 @@ class ScreamDialog extends Component {
         <CircularProgress size={200} thickness={2} />
       </div>
     ) : (
-      <Grid container spacing={16}>
+      <Grid container spacing={8}>
         <Grid item sm={5}>
           <img src={userImage} alt="Profile" className={classes.profileImage} />
         </Grid>
