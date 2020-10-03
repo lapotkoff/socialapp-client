@@ -19,6 +19,8 @@ import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
 import user from './pages/user';
+// import CreateRoom from "./routes/CreateRoom";
+import Room from "./routes/Room";
 
 const theme = createMuiTheme(themeObject);
 
@@ -56,6 +58,7 @@ class App extends Component {
                   path="/users/:handle/scream/:screamId"
                   component={user}
                 />
+                <Route path="/room/:roomID" component={Room} />
               </Switch>
             </div>
           </Router>

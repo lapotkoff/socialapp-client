@@ -35,6 +35,7 @@ const styles = (theme) => ({
 
 const ProfileSkeleton = (props) => {
   const { classes } = props;
+
   return (
     <Paper className={classes.paper}>
       <div className={classes.profile}>

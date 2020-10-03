@@ -35,6 +35,7 @@ class user extends Component {
   render() {
     const { screams, loading } = this.props.data;
     const { screamIdParam } = this.state;
+    const { history } = this.props
 
     const screamsMarkup = loading ? (
       <ScreamSkeleton />
@@ -59,7 +60,7 @@ class user extends Component {
           {this.state.profile === null ? (
             <ProfileSkeleton />
           ) : (
-            <StaticProfile profile={this.state.profile} />
+            <StaticProfile profile={this.state.profile} history={history} />
           )}
         </Grid>
       </Grid>

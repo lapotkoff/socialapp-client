@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { v1 as uuid } from "uuid";
 import withStyles from '@material-ui/core/styles/withStyles';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 // MUI
 import MuiLink from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 // Icons
 import LocationOn from '@material-ui/icons/LocationOn';
@@ -21,8 +23,14 @@ const styles = (theme) => ({
 const StaticProfile = (props) => {
   const {
     classes,
+    history,
     profile: { handle, createdAt, imageUrl, bio, website, location }
   } = props;
+
+  function create() {
+    const id = uuid();
+    history.push(`/room/${id}`);
+  }
 
   return (
     <Paper className={classes.paper}>
@@ -61,6 +69,8 @@ const StaticProfile = (props) => {
           )}
           <CalendarToday color="primary" />{' '}
           <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
+          <hr />
+          <Button onClick={create}>Create a room with this user</Button>
         </div>
       </div>
     </Paper>
