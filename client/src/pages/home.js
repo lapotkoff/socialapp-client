@@ -26,7 +26,7 @@ class home extends Component {
           {recentScreamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <Profile />
+          <Profile history={this.props.history} />
         </Grid>
       </Grid>
     );

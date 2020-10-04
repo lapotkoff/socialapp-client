@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
+import Button from '@material-ui/core/Button';
+import CallEndIcon from '@material-ui/icons/CallEnd';
 
 const Container = styled.div`
     padding: 20px;
@@ -13,8 +15,10 @@ const Container = styled.div`
 `;
 
 const StyledVideo = styled.video`
-    height: 40%;
-    width: 50%;
+    height: 50vh;
+    width: 45vw;
+    margin-top: 100px;
+    margin-left: 30px;
 `;
 
 const Video = (props) => {
@@ -110,14 +114,31 @@ const Room = (props) => {
     }
 
     return (
-        <Container>
-            <StyledVideo muted ref={userVideo} autoPlay playsInline />
-            {peers.map((peer, index) => {
-                return (
-                    <Video key={index} peer={peer} />
-                );
-            })}
-        </Container>
+        <div style={{
+          position: 'absolute',
+          left: 8,
+          width: '100vw',
+          height: '100vh',
+          margin: '-20px -8px 0px -8px',
+          background: 'linear-gradient(90deg, rgba(2,0,36,1) 2%, rgba(85,9,121,1) 50%, rgba(130,0,255,1) 100%)'}}
+        >
+            <div style={{ margin: 'auto', display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <StyledVideo muted ref={userVideo} autoPlay playsInline />
+              {peers.map((peer, index) => {
+                  return (
+                      <Video key={index} peer={peer} />
+                  );
+              })}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 100 }}>
+              <Button onClick={() => {
+                setPeers([])
+                props.history.push('/')
+              }} style={{ backgroundColor: 'crimson', color: 'white' }}>
+                End this call<CallEndIcon />
+              </Button>
+            </div>
+        </div>
     );
 };
 

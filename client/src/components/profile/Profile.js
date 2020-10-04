@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { v1 as uuid } from "uuid";
 import withStyles from '@material-ui/core/styles/withStyles';
+import CallIcon from '@material-ui/icons/Call';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import EditDetails from './EditDetails';
@@ -42,6 +44,12 @@ class Profile extends Component {
   handleLogout = () => {
     this.props.logoutUser();
   };
+
+  create = () => {
+    const id = uuid();
+    this.props.history.push(`/room/${id}`);
+  }
+
   render() {
     const {
       classes,
@@ -103,6 +111,8 @@ class Profile extends Component {
               )}
               <CalendarToday color="primary" />{' '}
               <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
+              <hr />
+              <Button onClick={this.create}><CallIcon />Create a room</Button>
             </div>
             <MyButton tip="Logout" onClick={this.handleLogout}>
               <KeyboardReturn color="primary" />
